@@ -24,10 +24,10 @@ class Question extends Model
 
 
 
-    public function answers() {
-
-        return $this->belongsToMany(Answer::class,'question_answer');
-    }
+//    public function answers() {
+//
+//        return $this->belongsToMany(Answer::class,'question_answer');
+//    }
 
 
 
@@ -39,7 +39,7 @@ class Question extends Model
 
     public function answers() {
 
-        return $this->hasOne(Answer::class);
+        return $this->hasMany(Answer::class);
 
     }
 

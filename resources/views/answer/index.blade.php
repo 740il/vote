@@ -80,18 +80,18 @@
 {{--                        @endforeach--}}
 
 
-                            @foreach ($questionr as $qq)
-                                    {{$qq->note}}
-                            @endforeach
+{{--                            @foreach ($questionr as $qq)--}}
+{{--                                    {{$qq->note}}--}}
+{{--                            @endforeach--}}
 
-                        @foreach ($questionr as  $quest )
+                        @foreach ($question as  $quest )
 
 
                             <br>
 
 
                                 <div class="card ">
-                                    <p class="card-header text-white  bg-primary"> السؤال : {{$quest->note}}</p>
+                                    <p class="card-header text-white  bg-primary"> السؤال : {{$quest->question}}</p>
                                     <div class="card-body">
                                         <div class="text-right" dir="rtl">
                                             @if(isset($quest->note) )
@@ -253,32 +253,32 @@
                                                     {{--End submit button--}}
 {{--                                                @else--}}
 
-                                                    <div class="form-group">
-                                                        <div class="form-check">
-                                                            <input disabled class="form-check-input" type="radio" name="answer"
-                                                                   id="invalidCheck" value="0" required>
-                                                            <label class="form-check-label" for="invalidCheck">
-                                                                {{$quest->OptionsOne }}
-                                                            </label>
-                                                            <div class="invalid-feedback">
-                                                                يجب عليك اختيار احد الآمرين ! !
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    {{--<div class="form-group">--}}
+                                                    {{--    <div class="form-check">--}}
+                                                    {{--        <input disabled class="form-check-input" type="radio" name="answer"--}}
+                                                    {{--               id="invalidCheck" value="0" required>--}}
+                                                    {{--        <label class="form-check-label" for="invalidCheck">--}}
+                                                    {{--            {{$quest->OptionsOne }}--}}
+                                                    {{--        </label>--}}
+                                                    {{--        <div class="invalid-feedback">--}}
+                                                    {{--            يجب عليك اختيار احد الآمرين ! !--}}
+                                                    {{--        </div>--}}
+                                                    {{--    </div>--}}
+                                                    {{--</div>--}}
 
                                                     {{-- ###########  Radio Option Button value="1" الاختيار الثاني ############--}}
-                                                    <div class="form-group">
-                                                        <div class="form-check">
-                                                            <input disabled class="form-check-input" type="radio" name="answer"
-                                                                   id="invalidCheck" value="1" required>
-                                                            <label class="form-check-label" for="invalidCheck">
-                                                                {{$quest->OptionsTwo }}
-                                                            </label>
-                                                            <div class="invalid-feedback">
-                                                                يجب عليك اختيار احد الآمرين ! !
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    {{--<div class="form-group">--}}
+                                                    {{--    <div class="form-check">--}}
+                                                    {{--        <input disabled class="form-check-input" type="radio" name="answer"--}}
+                                                    {{--               id="invalidCheck" value="1" required>--}}
+                                                    {{--        <label class="form-check-label" for="invalidCheck">--}}
+                                                    {{--            {{$quest->OptionsTwo }}--}}
+                                                    {{--        </label>--}}
+                                                    {{--        <div class="invalid-feedback">--}}
+                                                    {{--            يجب عليك اختيار احد الآمرين ! !--}}
+                                                    {{--        </div>--}}
+                                                    {{--    </div>--}}
+                                                    {{--</div>--}}
                                                     {{-- ###########  Radio Option Button value="0" الاختيار الثالث ############--}}
 
                                                     {{-- ###########  Radio Option Button value="0" الاختيار الثالث ############--}}

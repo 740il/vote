@@ -26,10 +26,10 @@ class AnswerController extends Controller
     public function index()
     {
 
-                $question = Question::all();
-                $answer = Answer::all();
-                $aa = Answer::all()->count();
-                     $vv= Vote::all()->count() ;
+        $question = Question::all();
+        $answer = Answer::all();
+        $aa = Answer::all()->count();
+        $vv= Vote::all()->count() ;
 
 //        $voted = $question->answers()->whereUserId(Auth::id())->first();
 //                return  $answer ;
@@ -48,16 +48,16 @@ class AnswerController extends Controller
 
 //            return  $ans1 ;
 
-                $question = Question::orderBy('id', 'DESC')->with('answers','user')->get();
-                $vot = User::orderBy('id', 'DESC')->with('answers')->get();
-//        return    $question;
+        $question = Question::orderBy('id', 'DESC')->with('answers','user')->get();
+        $vot = User::orderBy('id', 'DESC')->with('answers')->count();
+//        return    $vot;
 
         $postt  =  Auth::user()->answers()->orderBy('created_at', 'desc')->count();
 
 //        return  $postt ;
 
 
-                $id = Auth::id();
+        $id = Auth::id();
 
 //        $qus = Question::with('answers')->where('user_id', $id)->get();
 //        Question::find($questionId)->answer()->get();
@@ -101,44 +101,17 @@ class AnswerController extends Controller
 //        $question =  Question::orderBy('id', 'DESC')->get();
 //        $question = Question::orderBy('id', 'DESC')->with('answers')->get();
 
-//        $test = User::with('answers','questions')->get();
-//                 return $test;                                                         $answer[$qus->id]
 
-
-//        $answer = Answer::orderBy('id', 'DESC')->with('question_id')->get();
-
-
-
-        $q = $user->questions;
-//
-//        return $answer;
-        foreach ($q as $qus){
-
-            $answer[$qus->id] = $qus->answers;
-
-        }
-
-
-        foreach ($answer as $ans){
-            $total[$ans->question_id] = $ans->count();
-
-
-        }
-
-
-
-
-
-
-
-
-
+        $total = Answer::count();
+//        $q = $user->questions;
+//        $vo = $q->answers;
+//        return $q;
 
         if($total != 0)
         {
 
-            $total_0 = round($vo->where('answer',0)->count()*100/$total);
-            $total_1 = round($vo->where('answer',1)->count()*100/$total );  // 2
+            $total_0 = round(DB::table('answers')->where('answer',0)->count()*100/$total);
+            $total_1 = round(DB::table('answers')->where('answer',1)->count()*100/$total );  // 2
 
         }
         else {
@@ -148,8 +121,8 @@ class AnswerController extends Controller
 
 
 
-        $total_0numper = $vo->where('answer',0)->count();   //1
-        $total_1numper = $vo->where('answer',1)->count();  // 2
+        $total_0numper = DB::table('answers')->where('answer',0)->count();   //1
+        $total_1numper = DB::table('answers')->where('answer',1)->count();  // 2
 
 //        $qus = collect(Answer::with('questions')->where('question_id', $id)->count());
 //        $qus = (Question::with('answer')->where('answer',1)->count());
@@ -210,17 +183,8 @@ class AnswerController extends Controller
 //        return  $ttt;
 //        dd  ($ttt);
 
-        return $q;
 
-        return view('answer.index ' , [
-            'questionr' => $q,
-            'total' => $total,
-            'total_0' =>$total_0,
-            'total_1'=>$total_1,
-            'user'=>$user,
-           'total_0numper'=>$total_0numper,
-            'total_1numper'=>$total_1numper,
-         ]);
+        return view('answer.index',compact('question','total_0','total_1','total_0numper','total_1numper'));
     }
 
     /**
